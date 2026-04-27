@@ -1,0 +1,5 @@
+{
+  "name": "D'Artagnan AI Chat",
+  "description": "A conversational AI chat application with two modes: Analyst for insights and Critical for deeper analysis including chart generation. Features a sleek dark mode and is powered by the Gemini API.",
+  "requestFramePermissions": []
+}

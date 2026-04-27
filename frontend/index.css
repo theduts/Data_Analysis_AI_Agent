@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        color-scheme: light;
+        --background: 0 0% 99%;
+        --foreground: 0 0% 12%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 12%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 12%;
+
+        --primary: 0 0% 18%;
+        --primary-foreground: 0 0% 98%;
+
+        --secondary: 0 0% 95%;
+        --secondary-foreground: 0 0% 16%;
+
+        --muted: 0 0% 96%;
+        --muted-foreground: 0 0% 42%;
+
+        --accent: 0 0% 95%;
+        --accent-foreground: 0 0% 16%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 240 6% 88%;
+        --input: 240 6% 88%;
+        --ring: 0 0% 60%;
+
+        --sidebar: 0 0% 98%;
+        --sidebar-foreground: 0 0% 14%;
+        --sidebar-accent: 0 0% 95%;
+        --sidebar-accent-foreground: 0 0% 12%;
+
+        --user-bubble: 0 0% 19%;
+        --user-bubble-foreground: 0 0% 98%;
+
+        --scrollbar-thumb: 0 0% 72%;
+        --scrollbar-thumb-hover: 0 0% 60%;
+
+        --chart-bar-bg: 210 100% 66%;
+
+        --radius: 0.625rem;
+    }
+
+    .dark {
+        color-scheme: dark;
+        --background: 222 18% 10%;
+        --foreground: 214 20% 92%;
+
+        --card: 222 18% 10%;
+        --card-foreground: 214 20% 92%;
+
+        --popover: 222 20% 11%;
+        --popover-foreground: 214 20% 92%;
+
+        --primary: 217 28% 24%;
+        --primary-foreground: 210 20% 96%;
+
+        --secondary: 220 16% 16%;
+        --secondary-foreground: 214 20% 92%;
+
+        --muted: 220 16% 16%;
+        --muted-foreground: 215 12% 62%;
+
+        --accent: 220 16% 16%;
+        --accent-foreground: 210 15% 95%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 220 14% 18%;
+        --input: 220 14% 18%;
+        --ring: 217 30% 50%;
+
+        --sidebar: 224 24% 5%;
+        --sidebar-foreground: 214 20% 92%;
+        --sidebar-accent: 220 16% 16%;
+        --sidebar-accent-foreground: 210 15% 95%;
+
+        --user-bubble: 217 28% 20%;
+        --user-bubble-foreground: 210 20% 96%;
+
+        --scrollbar-thumb: 218 14% 28%;
+        --scrollbar-thumb-hover: 217 16% 38%;
+
+        --chart-bar-bg: 226 71% 40%;
+    }
+}
+
+@layer base {
+    * {
+        border-color: hsl(var(--border));
+    }
+
+    body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+.ds-spinner {
+    transform-origin: center;
+    animation: ds-spinner-rotate 2s linear infinite;
+}
+
+.ds-spinner-circle {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: ds-spinner-dash 1.5s ease-in-out infinite;
+}
+
+@keyframes ds-spinner-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ds-spinner-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dashoffset: -125px;
+    }
+}
+
+/* Global scrollbar styles (premium neutral) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--scrollbar-thumb)) transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--scrollbar-thumb));
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--scrollbar-thumb-hover));
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-track-piece {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Keep utility class behavior in sync with global styling */
+.scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Force instant theme switch without staged fades between components */
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+    transition: none !important;
+}
+
+/* ── Thinking Indicator Animations ───────────────────────────────────────── */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes dot-pulse {
+    0%, 100% { opacity: 0.2; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-1px); }
+}
+
+.animate-shimmer {
+    background: linear-gradient(
+        90deg,
+        hsl(var(--muted-foreground) / 0.4) 25%,
+        hsl(var(--muted-foreground) / 0.8) 50%,
+        hsl(var(--muted-foreground) / 0.4) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.5s infinite linear;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.animate-dot {
+    animation: dot-pulse 1.4s infinite;
+}
+
+.animate-dot-1 { animation-delay: 0s; }
+.animate-dot-2 { animation-delay: 0.2s; }
+.animate-dot-3 { animation-delay: 0.4s; }
+

@@ -1,0 +1,54 @@
+# ========================
+# Environment & Secrets
+# ========================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*
+!.env.example
+
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+*.log
+*.txt
+!requirements.txt
+
+# ========================
+# Node / Frontend
+# ========================
+node_modules/
+dist/
+.npmrc
+
+# ========================
+# IDE & OS
+# ========================
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# ========================
+# Debug / Temp files
+# ========================
+debug_*.py
+check_syntax.py
+convert_log.py
+read_logs.py
+tmp_*.py
+verify_imports.py
+err.log
+output.txt
+partition.txt
+logs_tail.txt
